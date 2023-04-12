@@ -1,12 +1,22 @@
+package com.example.lab3.controladores;
+
+import com.example.lab3.repository.DoctorRepository;
+import com.example.lab3.repository.HospitalRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HomeController {
 
-    @ResponseBody
-    public String prueba(){
-        return "vista1";
+    final DoctorRepository doctorRepository;
+
+    public DoctorController(DoctorRepository doctorRepository) {
+        this.doctorRepository = doctorRepository;
+    }
+    @GetMapping("/listarHospital")
+    public String listarHospital(Model model){
+        model.addAttribute("listaHospital", HospitalRepository);
+        return "hospital";
     }
 }
