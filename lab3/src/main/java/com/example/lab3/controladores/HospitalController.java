@@ -27,7 +27,7 @@ public class HospitalController {
     }
 
 
-    @GetMapping("/listarHospital")
+    @GetMapping(value= {"/listarHospital", "/"})
     public String listarHospital(Model model){
         model.addAttribute("listaHospital",hospitalRepository.findAll());
         return "hospital";
