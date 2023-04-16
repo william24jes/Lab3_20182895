@@ -13,7 +13,7 @@
 
             <div class="card-body pb-0">
 
-                <span class="my-3" style="color: black;font-size: 29px;margin-top: 5px">Lista de hospitales</span>
+                <span class="my-3" style="color: black;font-size: 29px;margin-top: 5px">Lista de Próximos Pacientes</span>
 
                 <a th:href="@{/listarHospital}"><button  type="button" class="btn btn-primary">Mostrar hospitales</button></a>
                 <a th:href="@{/listarDoctor}"><button  type="button" class="btn btn-primary">Mostrar doctores</button></a>
@@ -24,20 +24,15 @@
 
                             <tbody>
                                 <tr>
+                                    <th>#</th>
+                                    <th>Nombre</th>
+                                    <th>Proxima Cita</th>
 
-                                    <th>Nombre del hospital</th>
-                                    <th>Direccion</th>
-                                    <th>Telefono</th>
-                                    <th> </th>
                                 </tr>
-                                <tr th:each="hospital,obj: ${listaHospital}">
-                                    <td th:text="${hospital.nombre}"></td>
-                                    <td th:text="${hospital.direccion}"></td>
-                                    <td th:text="${hospital.telefono}"></td>
-                                    <td><a class="btn btn-primary" th:href="@{'/doctorPorHospital'+'?id='+${hospital.id}}">Mostrar Doctores</a></td>
-                                    <td><a class="btn btn-primary" th:href="@{'/pacientePorHospital'+'?id='+${hospital.id}}">Mostrar Pacientes</a></td>
-
-
+                                <tr th:each="paciente,info: ${listaDoctorxPacienteProximasCitas}">
+                                    <td th:text="${info.index + 1}"></td>
+                                    <td th:text="${paciente.nombre}"></td>
+                                    <td th:text="${paciente.fecha_cita}"></td>
                                 </tr>
 
                             </tbody>
